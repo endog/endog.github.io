@@ -6,7 +6,7 @@ const nextConfig = {
     images: {
         unoptimized: true,
     },
-    basePath: process.env.GITHUB_ACTIONS,
+    basePath: "/" + process.env.GITHUB_ACTIONS,
     trailingSlash: true,
 }
 module.exports = nextConfig

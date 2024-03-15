@@ -1,7 +1,8 @@
 import cn from "classnames";
 import Link from "next/link";
 import Image from "next/image";
-
+import { basePath } from "../../../next.config"; // 追加
+const BASE_PATH = basePath ? basePath + "/" : ""; // 追加
 type Props = {
   title: string;
   src: string;
@@ -11,7 +12,7 @@ type Props = {
 const CoverImage = ({ title, src, slug }: Props) => {
   const image = (
     <Image
-      src={src}
+      src={`${BASE_PATH}${src}`}
       alt={`Cover Image for ${title}`}
       className={cn("shadow-sm w-full", {
         "hover:shadow-lg transition-shadow duration-200": slug,

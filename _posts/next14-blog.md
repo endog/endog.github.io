@@ -77,8 +77,8 @@ Source を GitHubActions として Configure から nextjs.yml を修正しデ�
 (AppRouter を利用している場合、以下をコメントアウトする必要があるようです。)
 
 ```
-    78  # - name: Static HTML export with Next.js
-    79  #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
+   78  # - name: Static HTML export with Next.js
+   79  #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
 ```
 
 ### Google Adsense の審査

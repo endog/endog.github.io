@@ -1,13 +1,11 @@
 ---
 title: "Next.js 14とgitGitHub Pagesでブログを公開しGoogle AdSenseを設定する"
 excerpt: "Next.js 14とgitGitHub Pagesでブログを公開しGoogle AdSenseを設定する"
-coverImage: "/assets/blog/hello-world/cover.jpg"
-date: "2024-03-16T18:00:00.000Z"
+coverImage: "/assets/blog/next14-blog/next-logo.jpg"
+date: "2024-03-28T18:00:00.000Z"
 ogImage:
-  url: "/assets/blog/hello-world/cover.jpg"
+  url: "/assets/blog/next14-blog/next-logo.jpg"
 ---
-
-# Next14 と GitHub Pages でサイトを公開してアドセンスまでつけてみる
 
 ## 目次
 
@@ -27,10 +25,10 @@ Next14 を使って手軽に無料で個人ブログの公開をしてアドセ�
 
 ## 技術スタック
 
-- 🚀 Next.js 14
+- 🚀 Next.js 14(App Router)
 - ⚛️ React 18
 - 📘 Typescript
-- 🎨 TailwindCSS
+- 🎨 Tailwind CSS
 - 🌎 GitHub pages
 - 🤖 GitHub actions
 
@@ -55,7 +53,9 @@ yarn create next-app --example blog-starter <username>.github.io
 
 2. ブログレイアウトの修正  
    ブログレイアウトを修正したい場合は、テンプレートを元にローカルで任意のレイアウトに修正します。
-   例えばテンプレートでは各記事に著者の名称と画像が設定されていますが、今サイトでは個人でのブログとなるため著者の情報を削除したレイアウトに変更しています。
+   例えばテンプレートでは各記事に著者の名称と画像が設定されていますが、本サイトでは個人でのブログとなるため著者の情報を削除したレイアウトに変更しています。  
+   また、Tailwind CSS を利用している場合は、markdown を html に変換した際に自分でスタイルを当てる必要があります。(GitHub Flavored)Markdown を html へ変換後に Tailwind CSS でスタイルするリポジトリがあったので真似させてもらいました。  
+   [github-markdown-tailwindcss/markdown.css](https://github.com/iandinwoodie/github-markdown-tailwindcss/blob/master/markdown.css)
 
 3. 静的エクスポートの有効化  
    GitHub Pages にデプロイするので、静的サイトとして利用するため、next.config.js ファイルを作成し、以下を記載します。
@@ -76,7 +76,16 @@ module.exports = nextConfig;
 
 ブログを GitHub Pages にデプロイしていきます。
 `<username>.github.io`のリポジトリページで Settings->Pages の順で GitHub Pages の設定画面へ進みます。  
-![GitHub Pages ページ画像]
-Source を GitHubActions
+![GitHub Pages ページ画像](/assets/blog/next14-blog/github-Pages.jpg)
+Source を GitHubActions として Configure から nextjs.yml を修正しデプロイします。
+(AppRouter を利用している場合、以下をコメントアウトする必要があるようです。)
+
+```
+    78  # - name: Static HTML export with Next.js
+    79  #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
+```
 
 ### Google Adsense の審査
+
+ここはまだ本記事の執筆時点で審査中となっているため、審査が問題なくクリアされたら編集しようと思います、、、  
+一旦審査の申し込みまでは本手順で作成したブログで問題なく実施できました！
